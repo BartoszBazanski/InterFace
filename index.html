@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="InterFaceApp">
+    <head>
+        <script src="./bower_components/angular/angular.min.js"></script>
+        <script src="./app/inter-face.module.js"></script>
+        <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <meta charset="utf-8">
+        <title>InterFace</title>
+    </head>
+    <body ng-controller="interFaceCtrl as ctrl">
+        <div class="container">
+            <h1>{{ctrl.hello}}</h1>
+            <div class="" ng-repeat="post in ctrl.posts">
+                <h4>{{post.title}}</h4>
+                <p>{{post.body}}</p>
+            </div>
+        </div>
+    </body>
+</html>
