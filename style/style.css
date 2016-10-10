@@ -1,0 +1,27 @@
+.red {
+    background-color: red;
+}
+.theme-color {
+    background-color: #4F4371;
+}
+.lightblue {
+    background-color: lightblue;
+}
+.lightgreen {
+    background-color: lightgreen;
+}
+
+.users > .md-button{
+    /*width: 100%;*/
+}
+md-icon {
+    margin-right: 10px;
+}
+.wrapper {
+    margin: 0 25px;
+}
+.avatar {
+    width: 100px;
+    height: 100px;
+    margin: 20px 0;
+}

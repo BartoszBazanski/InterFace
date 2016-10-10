@@ -1,6 +1,6 @@
 (function() {
     'use strict'
-    angular.module('InterFaceApp', []);
+    angular.module('InterFaceApp', ['ngMaterial']);
 
     angular.module('InterFaceApp')
         .controller('interFaceCtrl', InterFaceCtrl)
@@ -10,11 +10,10 @@
     InterFaceCtrl.$inject = ['interFaceService']
     function InterFaceCtrl(interFaceService) {
         var ctrl = this;
-        var promise = interFaceService.getPosts();
+        var promise = interFaceService.getUsers();
         promise.then(function(responce) {
-            ctrl.posts = responce;
+            ctrl.users = responce;
         });
-        ctrl.hello = "Hello world 2";
     };
     InterFaceService.$inject = ['APIurl', '$http']
     function InterFaceService(APIurl, $http) {
@@ -23,6 +22,15 @@
                 var promise = $http({
                     method: 'GET',
                     url: APIurl + '/posts'
+                }).then(function(response) {
+                    return response.data;
+                });
+                return promise;
+            },
+            getUsers: function() {
+                var promise = $http({
+                    method: 'GET',
+                    url: APIurl + '/users'
                 }).then(function(response) {
                     return response.data;
                 });
