@@ -21,7 +21,7 @@
             <md-sidenav md-is-locked-open="true" class="lightblue md-whiteframe-4dp">
                 <md-list>
                     <md-list-item class="users" ng-repeat="user in ctrl.users">
-                        <md-button flex layout="row">
+                        <md-button layout="row" ng-click="ctrl.selectUser($index)">
                             <md-icon flex="3" md-svg-src="./assets/svg/avatar.svg"></md-icon>
                             <span flex class="text-left">{{ user.name }}</span>
                         </md-button>
@@ -29,12 +29,26 @@
                 </md-list>
             </md-sidenav>
             <md-content id="content" class="lightgreen" flex flex-wrap>
-                <div class="wrapper">
+                <div class="wrapper" ng-if="ctrl.selected">
                     <md-icon class="avatar" md-svg-src="./assets/svg/avatar.svg"></md-icon>
-                    <h2>Thomas</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                    <h2>{{ctrl.selected.name}}</h2>
+                    <p>Email: {{ctrl.selected.email}}</p>
+                    <p>Website: {{ctrl.selected.website}}</p>
+                    <h3>Latest posts</h3>
+                    <article class="posts" ng-repeat="post in ctrl.posts">
+                        <h4>{{ post.title }}</h4>
+                        <p>{{ post.body }}</p>
+                        <div class="post-detail-wrapper">
+                            <span>Comments: {{ post.comments.length }}</span>
+                            <button type="button" ng-click="ctrl.toggleComments(post)">{{ post.showComments ? "Hide all" : "Show all" }}</button>
+                        </div>
+                        <div class="comments-list" ng-show="post.showComments">
+                            <article class="comment" ng-repeat="comment in post.comments | limitTo: 10">
+                                <p>{{ comment.body }}</p>
+                                <footer>{{ comment.email }}</footer>
+                            </article>
+                        </div>
+                    </article>
                 </div>
             </md-content>
         </div>

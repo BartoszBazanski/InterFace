@@ -25,3 +25,19 @@ md-icon {
     height: 100px;
     margin: 20px 0;
 }
+.posts {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    background-color: #fff;
+
+}
+.post-detail-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.comment {
+    padding: 20px;
+    background-color: #F6F6F6;
+    margin: 5px 0;
+}
