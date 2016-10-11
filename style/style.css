@@ -4,21 +4,17 @@
 .theme-color {
     background-color: #4F4371;
 }
-.lightblue {
-    background-color: lightblue;
-}
-.lightgreen {
-    background-color: lightgreen;
-}
-
 .users > .md-button{
-    /*width: 100%;*/
+    width: 100%;
+}
+.selected > button {
+    font-weight: bold;
 }
 md-icon {
     margin-right: 10px;
 }
 .wrapper {
-    margin: 0 25px;
+    padding: 0 25px;
 }
 .avatar {
     width: 100px;
@@ -40,4 +36,21 @@ md-icon {
     padding: 20px;
     background-color: #F6F6F6;
     margin: 5px 0;
+}
+#content {
+    display: flex;
+    flex-flow: row wrap;
+}
+.photo-gallery {
+    width: calc(100%/3);
+}
+.wrapper {
+    width: calc(200%/3);
+}
+.album {
+    padding: 20px;
+}
+.photo {
+    width: 33%;
+    padding: 3px;
 }

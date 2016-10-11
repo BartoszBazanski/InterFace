@@ -20,7 +20,7 @@
         <div layout="row" flex>
             <md-sidenav md-is-locked-open="true" class="lightblue md-whiteframe-4dp">
                 <md-list>
-                    <md-list-item class="users" ng-repeat="user in ctrl.users">
+                    <md-list-item class="users" ng-class="{selected : user.isSelected}" ng-repeat="user in ctrl.users">
                         <md-button layout="row" ng-click="ctrl.selectUser($index)">
                             <md-icon flex="3" md-svg-src="./assets/svg/avatar.svg"></md-icon>
                             <span flex class="text-left">{{ user.name }}</span>
@@ -28,7 +28,7 @@
                     </md-list-item>
                 </md-list>
             </md-sidenav>
-            <md-content id="content" class="lightgreen" flex flex-wrap>
+            <md-content id="content" class="lightgreen" flex>
                 <div class="wrapper" ng-if="ctrl.selected">
                     <md-icon class="avatar" md-svg-src="./assets/svg/avatar.svg"></md-icon>
                     <h2>{{ctrl.selected.name}}</h2>
@@ -49,6 +49,12 @@
                             </article>
                         </div>
                     </article>
+                </div>
+                <div class="photo-gallery" ng-if="ctrl.selected">
+                    <h2>Photo albums</h2>
+                    <div class="album" ng-repeat="album in ctrl.albums | limitTo: 1">
+                        <img class="photo" ng-repeat="photo in album.photos | limitTo: 9" ng-src="{{ photo.thumbnailUrl }}" alt="" />
+                    </div>
                 </div>
             </md-content>
         </div>
