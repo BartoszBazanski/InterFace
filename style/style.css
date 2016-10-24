@@ -5,8 +5,14 @@ h1 {
 h1 span {
     color: #6FD3BA;
 }
+.logged-user-container > button {
+    background-color: transparent;
+    border: none;
+}
 .users button {
     width: 100%;
+    background-color: transparent;
+    border: none;
 }
 .clear-fix {
     clear: both;

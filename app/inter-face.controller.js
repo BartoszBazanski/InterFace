@@ -12,7 +12,23 @@
         promiseUsers.then(function(response) {
             ctrl.users = response;
             ctrl.loggedUser = ctrl.users[0];
+            ctrl.editUser = {
+                username: ctrl.loggedUser.username,
+                address: {
+                    street: ctrl.loggedUser.address.street,
+                    suite: ctrl.loggedUser.address.suite,
+                    city: ctrl.loggedUser.address.city,
+                    zipcode: ctrl.loggedUser.address.zipcode
+                }
+            };
         });
+        ctrl.updateUser = function(userDetails, newUserDetails) {
+            userDetails.username = newUserDetails.username;
+            userDetails.address.street = newUserDetails.address.street;
+            userDetails.address.suite = newUserDetails.address.suite;
+            userDetails.address.city = newUserDetails.address.city;
+            userDetails.address.zipcode = newUserDetails.address.zipcode;
+        }
 
         ctrl.showUserDetails = false;
         ctrl.selected = null;

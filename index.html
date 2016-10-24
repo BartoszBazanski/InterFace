@@ -74,39 +74,39 @@
                 <h4 class="modal-title" id="myModalLabel">Edit user info</h4>
               </div>
               <div class="modal-body">
-                <form class="" action="index.html" method="post">
+                <form class="" action="index.html" method="post" novalidate>
                     <div class="row">
                         <div class="form-group col-xs-8">
                             <label for="">Username</label>
-                            <input type="text" ng-model="ctrl.loggedUser.username" class="form-control">
+                            <input type="text" ng-model="ctrl.editUser.username" class="form-control">
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="form-group col-xs-8">
                             <label for="">Street</label>
-                            <input type="text" ng-model="ctrl.loggedUser.address.street" class="form-control">
+                            <input type="text" ng-model="ctrl.editUser.address.street" class="form-control">
                         </div>
                         <div class="form-group col-xs-4">
                             <label for="">Suite</label>
-                            <input type="text" ng-model="ctrl.loggedUser.address.suite" class="form-control">
+                            <input type="text" ng-model="ctrl.editUser.address.suite" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-xs-8">
                             <label for="">City</label>
-                            <input type="text" ng-model="ctrl.loggedUser.address.city" class="form-control">
+                            <input type="text" ng-model="ctrl.editUser.address.city" class="form-control">
                         </div>
                         <div class="form-group col-xs-4">
                             <label for="">ZIP code</label>
-                            <input type="text" ng-model="ctrl.loggedUser.address.zipcode" class="form-control">
+                            <input type="text" ng-model="ctrl.editUser.address.zipcode" class="form-control">
                         </div>
                     </div>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ctrl.updateUser(ctrl.loggedUser, ctrl.editUser)">Save</button>
               </div>
             </div>
           </div>

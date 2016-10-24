@@ -14,7 +14,6 @@
                 url: APIurl + '/posts/',
                 params: { userId: userId }
             }).then(function(response) {
-                console.log(response.data);
                 return response.data;
             });
             return promise;
