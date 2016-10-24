@@ -1,6 +1,5 @@
-<div class="" flex layout="row">
-    <div class="wrapper">
-        <md-icon class="avatar" md-svg-src="./assets/svg/avatar.svg"></md-icon>
+<div class="row">
+    <div class="wrapper col-md-8">
         <h2>{{ctrl.selected.name}}</h2>
         <p>Email: {{ctrl.selected.email}}</p>
         <p>Website: {{ctrl.selected.website}}</p>
@@ -20,7 +19,7 @@
             </div>
         </article>
     </div>
-    <div class="photo-gallery">
+    <div class="photo-gallery col-md-4">
         <h2>Photo albums</h2>
         <div class="album" ng-repeat="album in ctrl.albums | limitTo: 1">
             <img class="photo" ng-repeat="photo in album.photos | limitTo: 9" ng-src="{{ photo.thumbnailUrl }}" alt="" />

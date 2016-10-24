@@ -2,15 +2,15 @@
 <html ng-app="InterFaceApp">
     <head>
         <script src="./bower_components/angular/angular.min.js"></script>
-        <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
-        <script src="./node_modules/angular-aria/angular-aria.min.js"></script>
-        <script src="./node_modules/angular-material/angular-material.min.js"></script>
+        <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="./app/angular-ui-router.min.js"></script>
         <script src="./app/inter-face.module.js"></script>
         <script src="./app/router.js"></script>
         <script src="./app/inter-face.controller.js"></script>
         <script src="./app/users.controller.js"></script>
         <script src="./app/inter-face.service.js"></script>
+        <link rel="stylesheet" href="./style/reset.css">
         <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="./node_modules/angular-material/angular-material.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,24 +18,98 @@
         <meta charset="utf-8">
         <title>InterFace</title>
     </head>
-    <body ng-controller="InterFaceCtrl as ctrl" layout="column">
-        <md-toolbar>
-            <h1>Angular Material Starter</h1>
-        </md-toolbar>
-        <div layout="row" flex>
-            <md-sidenav md-is-locked-open="true" class="lightblue md-whiteframe-4dp">
-                <md-list>
-                    <md-list-item class="users" ng-class="{selected : user.isSelected}" ng-repeat="user in ctrl.users">
-                        <md-button layout="row" ui-sref="user({userId: user.id})">
-                            <md-icon flex="3" md-svg-src="./assets/svg/avatar.svg"></md-icon>
-                            <span flex class="text-left">{{ user.name }}</span>
-                        </md-button>
-                    </md-list-item>
-                </md-list>
-            </md-sidenav>
-            <md-content id="content" class="lightgreen" flex>
+    <body ng-controller="InterFaceCtrl as ctrl">
+        <div class="theme-color">
+            <div class="pull-left">
+                <h1>Inter<span>face</span></h1>
+            </div>
+            <div class="logged-user-container pull-right">
+                <button id="logged-user" ng-click="ctrl.showUserDetails = !ctrl.showUserDetails">
+                    <span class="text-left">{{ ctrl.loggedUser.name }}</span>
+                </button>
+                <ul id="user-dropdown-menu" ng-show="ctrl.showUserDetails">
+                    <li>{{ctrl.loggedUser.username}}</li>
+                    <hr>
+                    <li>{{ctrl.loggedUser.address.street}}</li>
+                    <li>{{ctrl.loggedUser.address.suite}}</li>
+                    <li>{{ctrl.loggedUser.address.city}}</li>
+                    <li>{{ctrl.loggedUser.address.zipcode}}</li>
+                    <hr>
+                    <li>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                          EDIT
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+        <div>
+            <div class="lightblue col-md-4">
+                <ul>
+                    <li class="users" ng-class="{selected : user.isSelected}" ng-repeat="user in ctrl.users" ng-if="$index !== 0">
+                        <button ui-sref="user({userId: user.id})">
+                            <div class="text-left">
+                                <h5>{{ user.name }}</h5>
+                                <p>{{ user.username }}</p>
+                                <p>{{ user.email }}</p>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div id="content" class="lightgreen col-md-8">
                 <ui-view></ui-view>
-            </md-content>
+            </div>
+        </div>
+
+        <edit-user></edit-user>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit user info</h4>
+              </div>
+              <div class="modal-body">
+                <form class="" action="index.html" method="post">
+                    <div class="row">
+                        <div class="form-group col-xs-8">
+                            <label for="">Username</label>
+                            <input type="text" ng-model="ctrl.loggedUser.username" class="form-control">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="form-group col-xs-8">
+                            <label for="">Street</label>
+                            <input type="text" ng-model="ctrl.loggedUser.address.street" class="form-control">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label for="">Suite</label>
+                            <input type="text" ng-model="ctrl.loggedUser.address.suite" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-8">
+                            <label for="">City</label>
+                            <input type="text" ng-model="ctrl.loggedUser.address.city" class="form-control">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label for="">ZIP code</label>
+                            <input type="text" ng-model="ctrl.loggedUser.address.zipcode" class="form-control">
+                        </div>
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+              </div>
+            </div>
+          </div>
         </div>
     </body>
 </html>

@@ -26,7 +26,7 @@
                     }],
                     comments: ['posts', 'InterFaceService', function(posts, InterFaceService) {
                         posts.forEach(function(post) {
-                            InterFaceService.getComments(post.id).then(function(response) {
+                            return InterFaceService.getComments(post.id).then(function(response) {
                                 post.comments = response;
                             })
                         })
@@ -36,8 +36,7 @@
                     }],
                     photos: ['albums', 'InterFaceService', function(albums, InterFaceService) {
                         albums.forEach(function(album) {
-                            InterFaceService.getPhotosFromAlbums(album.id).then(function(response) {
-                                console.log(response);
+                            return InterFaceService.getPhotosFromAlbums(album.id).then(function(response) {
                                 album.photos = response;
                             })
                         })

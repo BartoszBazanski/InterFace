@@ -1,8 +1,22 @@
+h1 {
+    margin: 0;
+    padding: 10px 0 10px 10px;
+}
+h1 span {
+    color: #6FD3BA;
+}
+.users button {
+    width: 100%;
+}
+.clear-fix {
+    clear: both;
+}
 .red {
     background-color: red;
 }
 .theme-color {
     background-color: #4F4371;
+    color: #fff;
 }
 .users > .md-button{
     width: 100%;
@@ -53,4 +67,42 @@ md-icon {
 .photo {
     width: 33%;
     padding: 3px;
+}
+
+.logged-user-container {
+    position: relative;
+}
+#logged-user {
+    padding: 5px 50px 5px 5px;
+}
+.down-arrow {
+    margin-top: 50px;
+    width: 0;
+    height: 0;
+    border: 5px solid #fff;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+#user-dropdown-menu {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: 10px;
+    z-index: 5;
+    background-color: #6FD3BA;
+    color: #000;
+    padding: 15px;
+}
+
+#user-dropdown-menu:before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    border: 10px solid #6FD3BA;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
 }
