@@ -24,22 +24,32 @@
                     posts: ['user', 'InterFaceService', function(user, InterFaceService) {
                         return InterFaceService.getUserPosts(user.id);
                     }],
-                    comments: ['posts', 'InterFaceService', function(posts, InterFaceService) {
+                    comments: ['posts', 'InterFaceService', '$q', function(posts, InterFaceService, $q) {
+                        var promises = [];
+                        var promise;
                         posts.forEach(function(post) {
-                            return InterFaceService.getComments(post.id).then(function(response) {
+                            promise = InterFaceService.getComments(post.id);
+                            promise.then(function(response) {
                                 post.comments = response;
-                            })
-                        })
+                            });
+                            promises.push(promise);
+                        });
+                        return $q.all(promises);
                     }],
                     albums: ['user', 'InterFaceService', function(user, InterFaceService) {
                         return InterFaceService.getAlbums(user.id);
                     }],
-                    photos: ['albums', 'InterFaceService', function(albums, InterFaceService) {
+                    photos: ['albums', 'InterFaceService', '$q', function(albums, InterFaceService, $q) {
+                        var promises = [];
+                        var promise;
                         albums.forEach(function(album) {
-                            return InterFaceService.getPhotosFromAlbums(album.id).then(function(response) {
+                            promise = InterFaceService.getPhotosFromAlbums(album.id);
+                            promise.then(function(response) {
                                 album.photos = response;
-                            })
-                        })
+                            });
+                            promises.push(promise);
+                        });
+                        return $q.all(promises);
                     }]
                 }
             });

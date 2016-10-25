@@ -46,7 +46,7 @@
             <div class="clear-fix"></div>
         </div>
         <div>
-            <div class="lightblue col-md-4">
+            <div class="col-md-3">
                 <ul>
                     <li class="users" ng-class="{selected : user.isSelected}" ng-repeat="user in ctrl.users" ng-if="$index !== 0">
                         <button ui-sref="user({userId: user.id})">
@@ -59,7 +59,7 @@
                     </li>
                 </ul>
             </div>
-            <div id="content" class="lightgreen col-md-8">
+            <div id="content" class="col-md-9">
                 <ui-view></ui-view>
             </div>
         </div>

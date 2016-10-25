@@ -21,8 +21,9 @@
     </div>
     <div class="photo-gallery col-md-4">
         <h2>Photo albums</h2>
-        <div class="album" ng-repeat="album in ctrl.albums | limitTo: 1">
-            <img class="photo" ng-repeat="photo in album.photos | limitTo: 9" ng-src="{{ photo.thumbnailUrl }}" alt="" />
+        <!-- ng-repeat="album in ctrl.albums | limitTo: 1" -->
+        <div class="album">
+            <img class="photo" ng-repeat="photo in ctrl.photos | limitTo: 9" ng-src="{{ photo.thumbnailUrl }}" alt="" />
         </div>
     </div>
 </div>

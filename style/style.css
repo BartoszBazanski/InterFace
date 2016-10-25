@@ -5,6 +5,8 @@ h1 {
 h1 span {
     color: #6FD3BA;
 }
+.logged-user-container {
+}
 .logged-user-container > button {
     background-color: transparent;
     border: none;
@@ -13,6 +15,30 @@ h1 span {
     width: 100%;
     background-color: transparent;
     border: none;
+}
+.users {
+    position: relative;
+}
+.users:after {
+    content: '>';
+    color: #fff;
+    position: absolute;
+    width: 30px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    top: calc(50% - 10px);
+    right: 0;
+}
+.users:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 30px;
+    border: 1px solid #fff;
+    background-color: #6FD3BA;
 }
 .clear-fix {
     clear: both;
@@ -23,6 +49,7 @@ h1 span {
 .theme-color {
     background-color: #4F4371;
     color: #fff;
+    border-bottom: 1px solid lightgray;
 }
 .users > .md-button{
     width: 100%;
@@ -57,9 +84,15 @@ md-icon {
     background-color: #F6F6F6;
     margin: 5px 0;
 }
-#content {
-    display: flex;
-    flex-flow: row wrap;
+#content:before {
+    content: '';
+    position: absolute;
+    background-color: #4F4371;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+
 }
 .photo-gallery {
     width: calc(100%/3);
@@ -79,7 +112,8 @@ md-icon {
     position: relative;
 }
 #logged-user {
-    padding: 5px 50px 5px 5px;
+    padding: 20px 50px;
+    border-left: 1px solid lightgray;
 }
 .down-arrow {
     margin-top: 50px;
@@ -95,7 +129,7 @@ md-icon {
     position: absolute;
     top: 75px;
     left: 0;
-    right: 10px;
+    right: 0;
     z-index: 5;
     background-color: #6FD3BA;
     color: #000;

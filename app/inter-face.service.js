@@ -57,6 +57,15 @@
             });
             return promise;
         };
+        service.getPhotos = function() {
+            var promise = $http({
+                method: 'GET',
+                url: APIurl + '/photos'
+            }).then(function(response) {
+                return response.data;
+            });
+            return promise;
+        };
         service.getUserById = function(userId) {
             var promise = $http({
                 method: 'GET',
