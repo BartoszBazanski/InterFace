@@ -1,29 +1,27 @@
-<div class="row">
-    <div class="wrapper col-md-8">
-        <h2>{{ctrl.selected.name}}</h2>
-        <p>Email: {{ctrl.selected.email}}</p>
-        <p>Website: {{ctrl.selected.website}}</p>
-        <h3>Latest posts</h3>
-        <article class="posts" ng-repeat="post in ctrl.posts">
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.body }}</p>
-            <div class="post-detail-wrapper">
-                <span>Comments: {{ post.comments.length }}</span>
-                <button type="button" ng-click="ctrl.toggleComments(post)">{{ post.showComments ? "Hide all" : "Show all" }}</button>
-            </div>
-            <div class="comments-list" ng-show="post.showComments">
-                <article class="comment" ng-repeat="comment in post.comments | limitTo: 10">
-                    <p>{{ comment.body }}</p>
-                    <footer>{{ comment.email }}</footer>
-                </article>
-            </div>
-        </article>
-    </div>
-    <div class="photo-gallery col-md-4">
-        <h2>Photo albums</h2>
-        <!-- ng-repeat="album in ctrl.albums | limitTo: 1" -->
-        <div class="album">
-            <img class="photo" ng-repeat="photo in ctrl.photos | limitTo: 9" ng-src="{{ photo.thumbnailUrl }}" alt="" />
+<div class="col-md-8">
+    <h2>{{ctrl.selected.name}}</h2>
+    <p>Email: {{ctrl.selected.email}}</p>
+    <p>Website: {{ctrl.selected.website}}</p>
+    <h3>Latest posts</h3>
+    <article class="posts" ng-repeat="post in ctrl.posts">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.body }}</p>
+        <div class="row">
+                <span class="pull-left">Comments: {{ post.comments.length }}</span>
+                <button class="pull-right" type="button" ng-click="ctrl.toggleComments(post)">{{ post.showComments ? "Hide all" : "Show all" }}</button>
         </div>
+        <div class="comments-list" ng-show="post.showComments">
+            <article class="comment" ng-repeat="comment in post.comments | limitTo: 10">
+                <p>{{ comment.body }}</p>
+                <footer>{{ comment.email }}</footer>
+            </article>
+        </div>
+    </article>
+</div>
+<div class="photo-gallery col-md-4">
+    <h2>Photo albums</h2>
+    <!-- ng-repeat="album in ctrl.albums | limitTo: 1" -->
+    <div class="album">
+        <img class="photo" ng-repeat="photo in ctrl.photos | limitTo: 9" ng-src="{{ photo.thumbnailUrl }}" alt="" />
     </div>
 </div>

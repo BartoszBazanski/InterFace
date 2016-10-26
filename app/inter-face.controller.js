@@ -4,11 +4,10 @@
     angular.module('InterFaceApp')
         .controller('InterFaceCtrl', InterFaceCtrl);
 
-    InterFaceCtrl.$inject = ['InterFaceService']
-    function InterFaceCtrl(InterFaceService) {
+    InterFaceCtrl.$inject = ['InterFaceService', '$rootScope']
+    function InterFaceCtrl(InterFaceService, $rootScope) {
         var ctrl = this;
         var promiseUsers = InterFaceService.getUsers();
-
         promiseUsers.then(function(response) {
             ctrl.users = response;
             ctrl.loggedUser = ctrl.users[0];
@@ -39,5 +38,15 @@
             });
             ctrl.users[index].isSelected = true;
         };
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+            if(toState.resolve) {
+                ctrl.loading = true;
+            }
+        })
+        $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+            if(toState.resolve) {
+                ctrl.loading = false;
+            }
+        })
     };
 })();

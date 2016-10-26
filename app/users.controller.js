@@ -16,7 +16,6 @@
                     ctrl.photos.push(photo);
                 });
             });
-            console.log(ctrl.photos);
 
             ctrl.toggleComments = function(post) {
                 post.showComments = !post.showComments;
